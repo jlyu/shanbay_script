@@ -7,10 +7,12 @@ import re
 import sched
 import time
 
-domin_url=r'http://www.shanbay.com'
+
 CHECK_IN_POINT=7
 CHECK_IN_RATE=75
 ELIMINATE_RATE=3
+
+domain_url=r'http://www.shanbay.com'
 SAVE_PATH="C:\\Python27\\shanbay\\"
 
 s = sched.scheduler(time.time, time.sleep)

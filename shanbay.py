@@ -225,7 +225,6 @@ def GetPageUserInfo(content):
 		user=UserInfo('',user_name[i],user_value[i],user_age[i],user_index[i],'','',user_kickurl[i])
 		users_info.append(user)
 	#print "Got user info!"
-	#users_info=[item for item in users_info if item not in users_info] #去重
 	return users_info
 
 def GetAllUserInfo(url,pages):
@@ -249,10 +248,10 @@ def GetAllUserInfo(url,pages):
 def Main():
 	Login()
 	
-	group_index=domin_url+r"/team/detail/16/"
+	group_index=domain_url+r"/team/detail/16/"
 	pages=GetPages(group_index)
 	print 'group member:' + str(pages)
-	url=domin_url+r'/team/show_dismiss/16/?page={index}'
+	url=domain_url+r'/team/show_dismiss/16/?page={index}'
 	
 	membershipManagement=GetAllUserInfo(url,pages)
 	membershipManagement.Run()

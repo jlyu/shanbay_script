@@ -13,7 +13,7 @@ CHECK_IN_RATE=75
 ELIMINATE_RATE=3
 
 domain_url=r'http://www.shanbay.com'
-SAVE_PATH="C:\\Python27\\shanbay\\"
+SAVE_PATH="C:\\Python27\\Dev\\shanbay_script\\"
 
 s = sched.scheduler(time.time, time.sleep)
 
@@ -26,18 +26,22 @@ headers = {
 		#'Accept-Encoding':'gzip, deflate',
 		'Connection':'keep-alive',
 		'Referer':'http://www.shanbay.com/accounts/login/',
-		'Cookie':'csrftoken=cd854e88ca2c4b55dee261daa58e7545; __utma=183787513.439679500.1332726535.1332726535.1332726535.1; \
-					__utmb=183787513.12.9.1332727075064; __utmz=183787513.1332726535.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); \
-					csrftoken=cd854e88ca2c4b55dee261daa58e7545; sessionid=8b8cacdd15063df5e40210fc0dccbfb6; \
-					base_domain_c382b335ef05427a82a8d8cf07aa6261=shanbay.com; __utmc=183787513; \
+		'Cookie':'csrftoken=f574fbd41d53708b55155a9de59d19ec;\
+					__utma=183787513.983980085.1333713741.1333713741.1333713741.1;\
+					__utmb=183787513.2.10.1333713741; \
+					__utmc=183787513; \
+					__utmz=183787513.1333713741.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); \
+					csrftoken=f574fbd41d53708b55155a9de59d19ec; \
+					sessionid=94e1f422dca34f782bd814c99ed50acf; \
+					base_domain_c382b335ef05427a82a8d8cf07aa6261=shanbay.com; \
 					xnsetting_c382b335ef05427a82a8d8cf07aa6261=%7B%22connectState%22%3A2%2C%22oneLineStorySetting%22%3A3%2C%22shortStorySetting%22%3A3%2C%22shareAuth%22%3Anull%7D',
 		'Content-Type':'application/x-www-form-urlencoded',
-		'Content-Length':'121'
+		'Content-Length':'117'
 		} 
 postdata=urllib.urlencode({
-		'csrfmiddlewaretoken':'cd854e88ca2c4b55dee261daa58e7545',
-		'username':'************',
-		'password':'************',
+		'csrfmiddlewaretoken':'f574fbd41d53708b55155a9de59d19ec',
+		'username':'****',
+		'password':'****',
 		'login':'',
 		'continue':'home',
 		'u':'1',
@@ -69,7 +73,8 @@ class MembershipManagement:
 		self.SortUserInfo()
 		self.PlayEliminationSystem()
 		self.CalculateRank()
-		#self.KickOffMember()
+		self.PrintReport()
+		self.KickOffMember()
 		
 	
 	def age2day(self):
@@ -152,7 +157,7 @@ class MembershipManagement:
 				print content.decode('utf-8').encode(type)
 				repo = "组员["+user_name+"]已被踢除，个人主页："+user_index
 				f.write(repo+'\r\n')
-			f.close()
+		f.close()
 
 	def PrintReport(self):
 		f=open(SAVE_PATH+'CheckinReport.txt','w')
